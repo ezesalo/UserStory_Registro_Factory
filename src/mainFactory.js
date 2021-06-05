@@ -1,11 +1,8 @@
 import {crearServidor} from './ruteo/servidor.js'
 import axios from 'axios'
 
-const servidor = crearServidor()
 const port = 8080
-await servidor.conectar(port)
-
-const url = `http://localhost:${port}/usuarios`
+const servidor = await crearServidor(port)
 
 const socio1 = {
     nombre: 'eze1',
@@ -30,22 +27,15 @@ const socio1 = {
     dni: '56111',
     password: 'eze1'
   }
-  
-try {  
+     
     await axios.post(`http://localhost:${port}/usuarios`, socio1)
     console.log('reques completada 1')
   
     await axios.post(`http://localhost:${port}/usuarios`, socio2)
     console.log('reques completada 2')
     
-    //forzar falla
+    // //forzar falla
     await axios.post(`http://localhost:${port}/usuarios`, socio3)
     console.log('reques completada 3')
    
-
- await servidor.desconectar()  
-} catch (error) {
-    throw Error(`Error en Main: ${error}`) 
-}
-
-await servidor.desconectar()  
+ servidor.close()

@@ -2,7 +2,7 @@ import express from 'express'
 import registroRouter from './routers/registroRouter.js'
 
 
-function crearServidor(){
+function crearServidor(port){
 
     const app = express()
 
@@ -10,37 +10,19 @@ function crearServidor(){
 
     app.use('/usuarios', registroRouter)
 
-    let server = null
-
-    return {
-        conectar: (port) => {
-          return new Promise((resolve, reject) => {
-            if (server) {
-              reject(new Error('servidor ya conectado'))
-            } else {
-              server = app.listen(port, () => {
-                console.log(`todo bien, conectado en puerto ${server.address().port}`)
-                resolve()
-              })
-              server.on('error', (err) => {
-                reject(err)
-              })
-            }
-          })
-        },
-        desconectar: () => {
-          return new Promise((resolve, reject) => {
-            server.close((err) => {
-              if (err) {
-                reject(err)
-              } else {
-                server = null
-                resolve()
-              }
+  
+    return new Promise((resolve, reject) => {
+        const server = app.listen(port)
+            .once('error', () => {
+                reject(new Error('error al conectarse al servidor'))
             })
-          })
-        }
-      }
+            .once('listening', () => {
+                server.port = server.address().port
+                resolve(server)
+            })
+    })
+
+
 }
 
 export { crearServidor }
