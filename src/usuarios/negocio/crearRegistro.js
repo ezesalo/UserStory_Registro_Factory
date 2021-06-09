@@ -1,6 +1,6 @@
-import {crearUsuario} from "./modelos/usuario.js"
-import { asuntoMailRegistro, generarCuerpoMailRegistro } from "../../static/mailRegistro.js"
-import {crearErrorDniEnUso} from "./errores/errorDniEnUso.js"
+import {crearUsuario} from "../modelos/usuario.js"
+import { asuntoMailRegistro, generarCuerpoMailRegistro } from "../../compartido/mail/mailRegistro.js"
+import {crearErrorDniEnUso} from "../../compartido/errores/errorDniEnUso.js"
 
 function crearCURegistro(daoUsuarios, mailer){
     return{

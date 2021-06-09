@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer';
-import {crearErrorMailNoEnviado} from './errores/errorMailNoEnviado.js'
+import {crearErrorMailNoEnviado} from '../errores/errorMailNoEnviado.js'
 
 /**
  * Al trabajar con enviarConAdjunto contemplar lo siguiente:
@@ -18,9 +18,7 @@ function crearEnviadorDeMails(mail, pass){
     const remitente = "remitente"
 
     const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 465,
-        secure: true, // true for 465, false for other ports
+        service: "gmail",
         auth: {
           user: mail, 
           pass: pass, 

@@ -1,4 +1,4 @@
-import {crearServidor} from './ruteo/servidor.js'
+import {crearServidor} from './compartido/servidor/servidor.js'
 import axios from 'axios'
 
 const port = 8080
@@ -29,13 +29,13 @@ const socio1 = {
   }
      
     await axios.post(`http://localhost:${port}/usuarios`, socio1)
-    console.log('reques completada 1')
+    console.log('request completada 1')
   
     await axios.post(`http://localhost:${port}/usuarios`, socio2)
-    console.log('reques completada 2')
+    console.log('request completada 2')
     
     // //forzar falla
     await axios.post(`http://localhost:${port}/usuarios`, socio3)
-    console.log('reques completada 3')
+    console.log('request completada 3')
    
  servidor.close()

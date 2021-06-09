@@ -1,5 +1,5 @@
 import express from 'express'
-import {crearFactoryRegistro}  from '../../negocio/factoryCrearRegistro.js'
+import {crearFactoryRegistro}  from '../../usuarios/negocio/factoryCrearRegistro.js'
 
 
 const router = express.Router()

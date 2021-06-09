@@ -1,5 +1,5 @@
 import express from 'express'
-import registroRouter from './routers/registroRouter.js'
+import registroRouter from '../../usuarios/ruteo/registroRouter.js'
 
 
 function crearServidor(port){

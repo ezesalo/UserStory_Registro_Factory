@@ -1,4 +1,4 @@
-import {crearErrorDatosInvalidos} from "../errores/errorDatosInvalidos.js"
+import {crearErrorDatosInvalidos} from "../../compartido/errores/errorDatosInvalidos.js"
 
 function crearUsuario(datos){
     const usuario = {}
